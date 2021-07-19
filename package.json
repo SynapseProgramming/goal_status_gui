@@ -1,0 +1,14 @@
+{
+  "name": "goal_status_gui",
+  "version": "1.0.0",
+  "description": "A package which would display the current status of the robot",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Roald Ong",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^13.1.7"
+  }
+}
