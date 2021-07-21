@@ -22,7 +22,6 @@ function createWindow() {
     const node = new rclnodejs.Node('goal_status_gui');
     node.createSubscription('std_msgs/msg/Int32', 'goal_state', (msg) => {
       console.log(`Received message: ${typeof msg}`, msg);
-      //document.getElementById("goal_state").innerText = msg.data
       var num = msg.data;
       var string_num = num.toString();
       win.webContents.send('received_state', string_num)
