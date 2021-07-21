@@ -14,15 +14,17 @@ function createWindow() {
   win.loadFile('index.html')
 }
 
+rclnodejs.init().then(() => {
+  const node = new rclnodejs.Node('goal_status_gui');
+  node.createSubscription('std_msgs/msg/Int32', 'goal_state', (msg) => {
+    console.log(`Received message: ${typeof msg}`, msg);
+  });
+  rclnodejs.spin(node);
+});
 
 app.whenReady().then(() => {
   createWindow()
-  rclnodejs.init().then(() => {
-    const node = new rclnodejs.Node('publisher_example_node');
-    const publisher = node.createPublisher('std_msgs/msg/String', 'topic');
-    publisher.publish(`Hello ROS 2 from rclnodejs`);
-    node.spin();
-  });
+
 })
 
 
