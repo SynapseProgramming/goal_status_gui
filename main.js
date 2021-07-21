@@ -25,7 +25,7 @@ function createWindow() {
       //document.getElementById("goal_state").innerText = msg.data
       var num = msg.data;
       var string_num = num.toString();
-      win.webContents.send('received_state', num)
+      win.webContents.send('received_state', string_num)
     });
     rclnodejs.spin(node);
   });
