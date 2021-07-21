@@ -8,7 +8,7 @@ const path = require('path')
 
 
 var current_state = "-1";
-
+var blink_state = false;
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -25,20 +25,12 @@ function createWindow() {
     const node = new rclnodejs.Node('goal_status_gui');
 
     let timer = node.createTimer(1000, () => {
-      console.log('One second escaped!');
-
-      console.log('Cancel this timer.');
-      timer.cancel();
-
-      if (timer.isCanceled()) {
-        console.log('The timer has been canceled successfully.');
+      if (blink_state == false) {
+        blink_state = true;
+      } else if (blink_state == true) {
+        blink_state = false;
       }
-
-      console.log('Reset the timer.');
-      timer.reset();
-      console.log(
-        'The next call will be ' + timer.timeUntilNextCall() + 'ms later.'
-      );
+      win.webContents.send('blink_state', blink_state)
 
     });
 

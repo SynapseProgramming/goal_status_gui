@@ -24,4 +24,14 @@ require('electron').ipcRenderer.on('received_state', (event, message) => {
     document.getElementById("circle").style.background = "red";
   }
 
-})
+});
+
+require('electron').ipcRenderer.on('blink_state', (event, message) => {
+  if (message == true) {
+    console.log("blink state is true")
+  } else {
+    console.log("blink state is false")
+  }
+
+
+});
