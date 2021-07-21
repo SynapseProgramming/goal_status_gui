@@ -23,6 +23,26 @@ function createWindow() {
 
   rclnodejs.init().then(() => {
     const node = new rclnodejs.Node('goal_status_gui');
+
+    let timer = node.createTimer(1000, () => {
+      console.log('One second escaped!');
+
+      console.log('Cancel this timer.');
+      timer.cancel();
+
+      if (timer.isCanceled()) {
+        console.log('The timer has been canceled successfully.');
+      }
+
+      console.log('Reset the timer.');
+      timer.reset();
+      console.log(
+        'The next call will be ' + timer.timeUntilNextCall() + 'ms later.'
+      );
+
+    });
+
+
     node.createSubscription('std_msgs/msg/Int32', 'goal_state', (msg) => {
       //  console.log(`Received message: ${typeof msg}`, msg);
       var num = msg.data;
