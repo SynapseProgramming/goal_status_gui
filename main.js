@@ -2,7 +2,7 @@ const {
   app,
   BrowserWindow
 } = require('electron')
-const rcl_main = require('rclnodejs')
+const rclnodejs = require('rclnodejs')
 
 
 function createWindow() {
@@ -17,7 +17,6 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow()
-  const rclnodejs = require('rclnodejs');
   rclnodejs.init().then(() => {
     const node = new rclnodejs.Node('publisher_example_node');
     const publisher = node.createPublisher('std_msgs/msg/String', 'topic');
