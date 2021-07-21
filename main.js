@@ -9,8 +9,8 @@ const path = require('path')
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1920,
+    height: 1080,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
@@ -21,7 +21,7 @@ function createWindow() {
   rclnodejs.init().then(() => {
     const node = new rclnodejs.Node('goal_status_gui');
     node.createSubscription('std_msgs/msg/Int32', 'goal_state', (msg) => {
-      console.log(`Received message: ${typeof msg}`, msg);
+      //  console.log(`Received message: ${typeof msg}`, msg);
       var num = msg.data;
       var string_num = num.toString();
       win.webContents.send('received_state', string_num)
