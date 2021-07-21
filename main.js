@@ -7,6 +7,9 @@ const rclnodejs = require('rclnodejs')
 const path = require('path')
 
 
+var current_state = "-1";
+
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 1920,
@@ -24,7 +27,10 @@ function createWindow() {
       //  console.log(`Received message: ${typeof msg}`, msg);
       var num = msg.data;
       var string_num = num.toString();
-      win.webContents.send('received_state', string_num)
+      if (string_num != current_state) {
+        current_state = string_num;
+        win.webContents.send('received_state', string_num)
+      }
     });
     rclnodejs.spin(node);
   });
