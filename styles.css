@@ -1,6 +1,7 @@
 #main_header {
-  color: blue;
+  color: black;
   font-size: 50px;
+  margin: auto;
 }
 
 #circle {
