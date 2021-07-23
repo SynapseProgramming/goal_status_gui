@@ -8,7 +8,7 @@ const path = require('path')
 
 
 var current_state = "-1";
-
+var blink_state = false;
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -23,6 +23,18 @@ function createWindow() {
 
   rclnodejs.init().then(() => {
     const node = new rclnodejs.Node('goal_status_gui');
+
+    let timer = node.createTimer(1000, () => {
+      if (blink_state == false) {
+        blink_state = true;
+      } else if (blink_state == true) {
+        blink_state = false;
+      }
+      win.webContents.send('blink_state', blink_state)
+
+    });
+
+
     node.createSubscription('std_msgs/msg/Int32', 'goal_state', (msg) => {
       //  console.log(`Received message: ${typeof msg}`, msg);
       var num = msg.data;
