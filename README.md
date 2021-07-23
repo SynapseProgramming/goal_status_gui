@@ -38,3 +38,17 @@ In the goal_status gui package, run the following command:
 ```
 npm start
 ```
+### Building a standalone executable
+
+1. Firstly, go to the electron-packager directory
+```
+goal_status_gui/node_modules/electron-packager/bin
+```
+2. Next, run the following command (change the tags accordingly)
+```
+./electron-packager.js <filepath of electron package to build> <name of built file> --out=<filepath of location to build to>
+```
+3. To run the program, navigate to the generated file and run the following command:
+```
+./<name of built file>
+```
