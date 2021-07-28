@@ -5,9 +5,10 @@ A package which displays the current status of the robot.
 1. To install nodejs, copy and paste and run the following command to install the node version manager (nvm) 
 
 ```
+sudo apt install curl
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 ```
-2. Next, we can run (nvm list-remote) to list all of the possible nodejs version which we can use.
+2. Next, we can run (nvm list-remote) to list all of the possible nodejs version which we can use. Please open a new terminal and run the following command:
 ```
 nvm list-remote
 ```
