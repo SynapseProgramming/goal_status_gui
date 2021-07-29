@@ -7,13 +7,17 @@ require('electron').ipcRenderer.on('received_state', (event, message) => {
     audio.pause();
     audio.src = "Rick.mp3"
     audio.play();
-    document.getElementById("circle").style.background = "green";
+
+    document.getElementById("Ricardo_dance").hidden = true;
+    document.getElementById("Rick_dance").hidden = false;
 
   } else if (message == "1") {
-    document.getElementById("circle").style.background = "yellow";
     audio.pause();
     audio.src = "Tokyo.mp3"
     audio.play();
+
+    document.getElementById("Ricardo_dance").hidden = false;
+    document.getElementById("Rick_dance").hidden = true;
 
   } else if (message == "2") {
 
